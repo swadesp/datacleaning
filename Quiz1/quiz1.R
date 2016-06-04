@@ -6,7 +6,9 @@
 fileList <- list.files()
 if(!"getdata-data-ss06hid.csv" %in% fileList)
 {
-  download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv")
+  destFile = "./getdata-data-ss06hid.csv"
+  download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv", 
+                destfile = destFile)
 }
 survey_data <- read.csv("getdata-data-ss06hid.csv")
 m <- which(names(survey_data) == "VAL")
@@ -17,11 +19,14 @@ print(num) # question 1
 if(!require("xlsx")) {
   install.packages("xlsx")
 }
+library(xlsx)
 # Read data from <*.xlsx> file
 fileList <- list.files()
 if(!"getdata-data-DATA.gov_NGAP.xlsx" %in% fileList)
 {
-  download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx")
+  destFile = "./getdata-data-DATA.gov_NGAP.xlsx"
+  download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx", 
+                destfile = destFile)
 }
 dat <- read.xlsx("getdata-data-DATA.gov_NGAP.xlsx",
                         sheetIndex = 1, colIndex = (7:15),
@@ -47,7 +52,9 @@ if(!require("data.table")) {
 fileList <- list.files()
 if(!"getdata-data-ss06pid.csv" %in% fileList)
 {
-  download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv")
+  destFile = "./getdata-data-ss06pid.csv"
+  download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv", 
+                destfile = destFile)
 }
 DT <- fread("getdata-data-ss06pid.csv", sep=",")
 system.time(mean(DT$pwgtp15,by=DT$SEX))
